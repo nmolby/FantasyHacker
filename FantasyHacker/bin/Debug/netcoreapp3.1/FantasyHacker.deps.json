@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "FantasyHacker/1.0.0": {
+        "dependencies": {
+          "FantasyData.Api.Client": "0.9.2"
+        },
+        "runtime": {
+          "FantasyHacker.dll": {}
+        }
+      },
+      "FantasyData.Api.Client/0.9.2": {
+        "runtime": {
+          "lib/net461/FantasyData.Api.Client.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FantasyHacker/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FantasyData.Api.Client/0.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uJtSbxcHYJgg+tDJo1sX5hTHuiURNcsvhVdxCWOxlU4I87tSKoNjyp5XLueg+5Av3Puh+ee5rMzKdSy8OIAyqQ==",
+      "path": "fantasydata.api.client/0.9.2",
+      "hashPath": "fantasydata.api.client.0.9.2.nupkg.sha512"
+    }
+  }
+}

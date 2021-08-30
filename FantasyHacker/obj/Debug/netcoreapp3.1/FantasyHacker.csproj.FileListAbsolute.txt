@@ -1,0 +1,14 @@
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyHacker.deps.json
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyHacker.runtimeconfig.json
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyHacker.runtimeconfig.dev.json
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyHacker.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyHacker.pdb
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyData.Api.Client.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.csproj.AssemblyReference.cache
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.AssemblyInfoInputs.cache
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.AssemblyInfo.cs
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.csproj.CoreCompileInputs.cache
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.csproj.CopyComplete
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.pdb
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.genruntimeconfig.cache
