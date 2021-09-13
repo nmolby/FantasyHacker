@@ -12,3 +12,14 @@
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.dll
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.pdb
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.genruntimeconfig.cache
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Core.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll

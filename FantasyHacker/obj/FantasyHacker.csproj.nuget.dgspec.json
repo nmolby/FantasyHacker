@@ -20,14 +20,14 @@
           "/Users/nmolby/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,8 +38,30 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "FantasyData.Api.Client": {
+              "target": "Package",
+              "version": "[0.9.2, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
+            "System.Net.Requests": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Net.WebSockets": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

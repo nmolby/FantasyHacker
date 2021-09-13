@@ -1,0 +1,2 @@
+﻿https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&date=2021-09-07
+https://statsapi.mlb.com/api/v1/game/632580/boxscore
