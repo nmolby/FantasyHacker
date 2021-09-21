@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using FantasyHacker.Interface;
 using System.Collections.Generic;
 
-namespace FantasyHacker.BoxScore
+namespace FantasyHacker.BoxScoreResponse
 {
     public class Player : IFantasyPlayer
     {

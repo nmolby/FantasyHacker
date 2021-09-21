@@ -1,0 +1,5 @@
+﻿BoxScore describes the Box Score of a specific game. It includes the stats of every player during the game.
+
+API Endpoint:
+
+https://statsapi.mlb.com/api/v1/game/632580/boxscore

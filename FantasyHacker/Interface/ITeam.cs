@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using FantasyHacker.BoxScore;
+using FantasyHacker.BoxScoreResponse;
 
 namespace FantasyHacker.Interface
 {

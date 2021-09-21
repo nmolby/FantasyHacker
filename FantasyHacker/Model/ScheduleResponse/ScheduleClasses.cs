@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace FantasyHacker.Schedule
+namespace FantasyHacker.ScheduleResponse
 {
-    // Root myDeserializedClass = JsonSerializer.Deserialize<Root>(myJsonResponse);
     public class Status
     {
         [JsonPropertyName("abstractGameState")]
@@ -230,7 +229,7 @@ namespace FantasyHacker.Schedule
         public List<object> Events { get; set; }
     }
 
-    public class Root
+    public class Schedule
     {
         [JsonPropertyName("copyright")]
         public string Copyright { get; set; }

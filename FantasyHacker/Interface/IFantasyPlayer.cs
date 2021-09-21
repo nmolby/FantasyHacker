@@ -1,5 +1,5 @@
 ﻿using System;
-using FantasyHacker.BoxScore;
+using FantasyHacker.BoxScoreResponse;
 namespace FantasyHacker.Interface
 {
     public interface IFantasyPlayer : IFantasyScoreable

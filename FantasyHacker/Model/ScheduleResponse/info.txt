@@ -1,0 +1,8 @@
+﻿Schedule describes the games played on a specific day, range of days, or a season.
+
+API Endpoints:
+
+
+https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&season=2020
+https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&date=2021-09-07
+https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&startDate=2021-06-07&endDate=2021-09-14

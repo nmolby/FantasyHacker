@@ -1,0 +1,6 @@
+﻿Person describes the season stats for a specific player or players. It includes the stats of the player for every game that they played in the specific season.
+
+API Endpoint:
+
+https://statsapi.mlb.com/api/v1/people?personIds=475253&season=2018&hydrate=stats(type=gameLog,season=2018)
+https://statsapi.mlb.com/api/v1/people?personIds=475253,475254&season=2018&hydrate=stats(type=gameLog,season=2018)

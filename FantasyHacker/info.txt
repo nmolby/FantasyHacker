@@ -1,2 +1,5 @@
 ﻿https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&date=2021-09-07
 https://statsapi.mlb.com/api/v1/game/632580/boxscore
+https://statsapi.mlb.com/api/v1/people?personIds=475253&season=2018&hydrate=stats(type=gameLog,season=2018)
+https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&startDate=2021-06-07&endDate=2021-09-14
+https://statsapi.mlb.com/api/v1.1/game/632580/feed/live

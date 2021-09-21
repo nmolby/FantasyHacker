@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using FantasyHacker.Interface;
 
-namespace FantasyHacker.BoxScore
+namespace FantasyHacker.BoxScoreResponse
 {
     public class Batting : IFantasyScoreable
     {
