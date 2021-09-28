@@ -23,3 +23,4 @@
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/System.ComponentModel.Annotations.dll
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.GeneratedMSBuildEditorConfig.editorconfig

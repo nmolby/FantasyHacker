@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using FantasyHacker.Interface;
 namespace FantasyHacker.BoxScoreResponse
 {
-    public class BoxScore : IScoreByPlayer
+    public class BoxScore : IGame
     {
         [JsonPropertyName("copyright")]
         public string Copyright { get; set; }
