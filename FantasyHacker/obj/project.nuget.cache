@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lSEy/J/UeR1fIuHTJPS4tIXE0einndUW1gWqkcNNle0BPe3AfLanw+scXL0mZIgiNPmWo8EG+TCDZp6MAXP0HA==",
+  "dgSpecHash": "JDlFvvd8xManTtieTk5Nx0idp709ic2TmW8dIjnF8EyqXxp7KtOc/QuRCFuXgQafHugya2g5N+4H4ow4UacpPQ==",
   "success": true,
   "projectFilePath": "/Users/nmolby/Projects/FantasyHacker/FantasyHacker/FantasyHacker.csproj",
   "expectedPackageFiles": [
@@ -67,7 +67,8 @@
     "/Users/nmolby/.nuget/packages/system.security.cryptography.x509certificates/4.3.0/system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
     "/Users/nmolby/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
     "/Users/nmolby/.nuget/packages/system.threading/4.3.0/system.threading.4.3.0.nupkg.sha512",
-    "/Users/nmolby/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512"
+    "/Users/nmolby/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512",
+    "/Users/nmolby/.nuget/packages/microsoft.netcore.app.host.osx-x64/3.1.18/microsoft.netcore.app.host.osx-x64.3.1.18.nupkg.sha512"
   ],
   "logs": [
     {

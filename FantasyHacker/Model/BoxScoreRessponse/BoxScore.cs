@@ -19,6 +19,7 @@ namespace FantasyHacker.BoxScoreResponse
         public List<Info> Info { get; set; }
 
         [JsonPropertyName("pitchingNotes")]
+
         public List<object> PitchingNotes { get; set; }
 
         public List<IFantasyPlayer> Score()

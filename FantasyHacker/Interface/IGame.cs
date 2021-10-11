@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FantasyHacker.BoxScoreResponse;
 namespace FantasyHacker.Interface
 {
-    public interface IScoreByPlayer
+    public interface IGame
     {
         public List<IFantasyPlayer> Score();
     }

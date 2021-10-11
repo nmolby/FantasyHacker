@@ -50,10 +50,10 @@ namespace FantasyHacker.Helper
             return await JsonSerializer.DeserializeAsync<ScheduleResponse.Schedule>(scheduleResponse);
         }
 
-        public async Task<List<PersonResponse.Person>> GetPeopleStats(IEnumerable<int> personIds, int season)
+        public async Task<PersonResponse.PersonResponseRoot> GetPeopleStats(IEnumerable<int> personIds, string season)
         {
             // https://statsapi.mlb.com/api/v1/people?personIds=475253,475254&season=2018&hydrate=stats(type=gameLog,season=2018)
-            Uri uri = new Uri(BASE_URL, $"people?personIds={String.Join(',', personIds)}&season={season}&hydrate=stats(stype=gameLog,season={season})");
+            Uri uri = new Uri(BASE_URL, $"people?personIds={String.Join(',', personIds)}&season={season}&hydrate=stats(type=gameLog,season={season})");
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
@@ -62,7 +62,23 @@ namespace FantasyHacker.Helper
 
             PersonResponse.PersonResponseRoot personResponseRoot = await JsonSerializer.DeserializeAsync<PersonResponse.PersonResponseRoot>(personResponse);
 
-            return personResponseRoot.People;
+            return personResponseRoot;
+        }
+
+        public async Task<LiveFeed.Root> GetLiveFeed(int gameId)
+        {
+            // https://statsapi.mlb.com/api/v1.1/game/632580/feed/live
+            var updatedBaseUrl = new Uri("https://statsapi.mlb.com/api/v1.1/");
+            Uri uri = new Uri(updatedBaseUrl, $"game/{gameId}/feed/live");
+
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
+
+            var liveFeedResponse = await _client.GetStreamAsync(uri);
+
+            var liveFeedRoot = await JsonSerializer.DeserializeAsync<LiveFeed.Root>(liveFeedResponse);
+
+            return liveFeedRoot;
         }
     }
 }
