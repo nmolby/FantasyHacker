@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using FantasyHacker.Interface;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+
 namespace FantasyHacker.Model
 {
     /// <summary>
     /// Represents the stats of a specific player for a specific game. Also can injest season stats of that player for the season of the game.
     /// </summary>
-    public class MLBPlayer : IFantasyPlayer
+    public class MLBPlayer : IFantasyPlayer, IComparable<MLBPlayer>
     {
         public int PlayerId { get; set; }
         public BoxScoreResponse.BoxScore BoxScore { get; private set; }
         public BoxScoreResponse.Player PlayerGameStats { get; private set; }
-        public PersonResponse.Person SeasonStats { get; private set; }
+        public PersonResponse.Person SeasonStatsByGame { get; private set; }
+        public BoxScoreResponse.SeasonStats SeasonStatsBeforeGame { get => PlayerGameStats.SeasonStats; }
         public BoxScoreResponse.Person Person { get => PlayerGameStats?.Person; }
         public BoxScoreResponse.Position Position { get => PlayerGameStats?.Position; }
         public BoxScoreResponse.Stats Stats { get => PlayerGameStats?.Stats; }
@@ -52,8 +55,8 @@ namespace FantasyHacker.Model
 
         public void InjestSeasonStats(PersonResponse.PersonResponseRoot personResponseRoot)
         {
-            SeasonStats = personResponseRoot.People.Where(x => x.Id == PlayerId).FirstOrDefault();
-            if(SeasonStats == null)
+            SeasonStatsByGame = personResponseRoot.People.Where(x => x.Id == PlayerId).FirstOrDefault();
+            if(SeasonStatsByGame == null)
             {
                 throw new Exception("Player not found in season stats");
             }
@@ -62,6 +65,32 @@ namespace FantasyHacker.Model
         public decimal Score()
         {
             return PlayerGameStats.Score();
+        }
+
+        public bool IsActivePlayer()
+        {
+            if(PlayerGameStats.GameStatus.IsOnBench || (Stats.Batting.AtBats == 0 && Stats.Pitching.BattersFaced == 0))
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
+
+        public int CompareTo(MLBPlayer other)
+        {
+            if(PlayerId == other.PlayerId)
+            {
+                return 0;
+            } else if (PlayerId > other.PlayerId)
+            {
+                return 1;
+            } else
+            {
+                return -1;
+            }
         }
     }
 }

@@ -41,6 +41,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Extreme.Numerics": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
             "FantasyData.Api.Client": {
               "target": "Package",
               "version": "[0.9.2, )"

@@ -13,4 +13,7 @@
     <SourceRoot Include="/Users/nmolby/.nuget/packages/" />
     <SourceRoot Include="/usr/local/share/dotnet/sdk/NuGetFallbackFolder/" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgExtreme_Numerics Condition=" '$(PkgExtreme_Numerics)' == '' ">/Users/nmolby/.nuget/packages/extreme.numerics/8.0.13</PkgExtreme_Numerics>
+  </PropertyGroup>
 </Project>

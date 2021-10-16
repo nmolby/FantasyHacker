@@ -50,7 +50,7 @@ namespace FantasyHacker.Helper
             return await JsonSerializer.DeserializeAsync<ScheduleResponse.Schedule>(scheduleResponse);
         }
 
-        public async Task<PersonResponse.PersonResponseRoot> GetPeopleStats(IEnumerable<int> personIds, string season)
+        public async Task<PersonResponse.PersonResponseRoot> GetPeopleStats(IEnumerable<int> personIds, int season)
         {
             // https://statsapi.mlb.com/api/v1/people?personIds=475253,475254&season=2018&hydrate=stats(type=gameLog,season=2018)
             Uri uri = new Uri(BASE_URL, $"people?personIds={String.Join(',', personIds)}&season={season}&hydrate=stats(type=gameLog,season={season})");
