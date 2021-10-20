@@ -38,6 +38,23 @@ namespace FantasyHacker.Helper
             return await JsonSerializer.DeserializeAsync<ScheduleResponse.Schedule>(scheduleResponse);
         }
 
+        public async Task<ScheduleResponse.Schedule> GetSchedule(DateTime startDate, DateTime endDate)
+        { 
+            //https://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&startDate=2021-06-07&endDate=2021-09-14
+
+            string startDateString = startDate.ToString("yyyy-MM-dd");
+            string endDateString = endDate.ToString("yyyy-MM-dd");
+
+            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&startDate={startDateString}&endDate={endDateString}");
+
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
+
+            var scheduleResponse = await _client.GetStreamAsync(uri);
+
+            return await JsonSerializer.DeserializeAsync<ScheduleResponse.Schedule>(scheduleResponse);
+        }
+
         public async Task<ScheduleResponse.Schedule> GetSchedule(int season)
         {
             Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&season={season}");

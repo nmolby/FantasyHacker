@@ -4,6 +4,10 @@ using FantasyHacker.BoxScoreResponse;
 
 namespace FantasyHacker.Interface
 {
+    /// <summary>
+    /// Currently is any MLB team
+    /// TODO: Abstract this interface to apply to multiple leagues
+    /// </summary>
     public interface ITeamGame
     {
         public Team Team { get; set; }

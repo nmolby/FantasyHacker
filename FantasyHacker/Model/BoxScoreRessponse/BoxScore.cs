@@ -22,16 +22,16 @@ namespace FantasyHacker.BoxScoreResponse
 
         public List<object> PitchingNotes { get; set; }
 
-        public List<IFantasyPlayer> Score()
+        public List<IFantasyPlayer> GetPlayers()
         {
-            var playerScores = new List<IFantasyPlayer>();
+            var players = new List<IFantasyPlayer>();
             var teams = new List<ITeamGame> { Teams.Away, Teams.Home };
             foreach (ITeamGame teamGame in teams)
             {
-                playerScores.AddRange(teamGame.Players.Values);
+                players.AddRange(teamGame.Players.Values);
             }
 
-            return playerScores;
+            return players;
         }
     }
 }

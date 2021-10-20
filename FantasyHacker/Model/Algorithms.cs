@@ -6,7 +6,7 @@ namespace FantasyHacker.Model
 {
     public class AvgEraAlgorithm : IAlgorithm <MLBPlayer>
     {
-        public Dictionary<MLBPlayer, decimal> RankPlayers(List<MLBPlayer> players)
+        public Dictionary<MLBPlayer, decimal> RankPlayers(IEnumerable<MLBPlayer> players)
         {
             var myDict = new Dictionary<MLBPlayer, decimal>();
 
@@ -42,7 +42,7 @@ namespace FantasyHacker.Model
 
     public class RandomAlgorithm : IAlgorithm<MLBPlayer>
     {
-        public Dictionary<MLBPlayer, decimal> RankPlayers(List<MLBPlayer> players)
+        public Dictionary<MLBPlayer, decimal> RankPlayers(IEnumerable<MLBPlayer> players)
         {
             var myDict = new Dictionary<MLBPlayer, decimal>();
 
