@@ -14,14 +14,44 @@ namespace FantasyHacker
     {
         static async Task Main(string[] args)
         {
-            var playerRanksAvgEraAlg = await RankPlayersByGame(new DateTime(2021, 10, 01), new AvgEraAlgorithm());
-            var playerRanksRandAlg = await RankPlayersByGame(new DateTime(2021, 10, 01), new RandomAlgorithm());
-            var corByGameAvgEraAlg = CalculateCorrelations(playerRanksAvgEraAlg);
-            var corByGameRandAlg = CalculateCorrelations(playerRanksRandAlg);
-            Console.WriteLine($"Batting Average & ERA Correlation: {string.Join(',', corByGameAvgEraAlg.Values.ToList())}");
-            Console.WriteLine($"Random Correlation: {string.Join(',', corByGameRandAlg.Values.ToList())}");
-            Console.WriteLine($"Batting Average & ERA Correlation Average: {corByGameAvgEraAlg.Values.ToList().Average()}");
-            Console.WriteLine($"Random Correlation Average: {corByGameRandAlg.Values.ToList().Average()}");
+            var randAlgEval = await EvaluateAlgorithm(new RandomAlgorithm(), 10);
+            var batAvgEraEval = await EvaluateAlgorithm(new AvgEraAlgorithm(), 10);
+            Console.WriteLine($"Random Algorithm Average: {randAlgEval.averageCorrelation}. Confidence Interval: {randAlgEval.confidenceInterval}. Std. Deviation: {randAlgEval.stdCorrelation}");
+            Console.WriteLine($"Batting Average ERA Average: {batAvgEraEval.averageCorrelation}. Confidence Interval: {batAvgEraEval.confidenceInterval}. Std. Deviation: {batAvgEraEval.stdCorrelation}");
+        }
+
+        static async Task<AlgorithmEvaluation<MLBPlayer>> EvaluateAlgorithm(IAlgorithm<MLBPlayer> algorithm, int sampleSize = 50)
+        {
+            var eval = new AlgorithmEvaluation<MLBPlayer>(algorithm);
+            var mlbApiHelper = new MLBAPIHelper();
+            var datesOfInterest = new List<ScheduleResponse.Date>();
+            
+
+            List<Task<ScheduleResponse.Schedule>> schedulesOfInterest = new List<Task<ScheduleResponse.Schedule>>() {
+                mlbApiHelper.GetSchedule(2021),
+                mlbApiHelper.GetSchedule(2020),
+                mlbApiHelper.GetSchedule(2019)
+            };
+
+            while(schedulesOfInterest.Any())
+            {
+                var schedule = await Task.WhenAny(schedulesOfInterest);
+                schedulesOfInterest.Remove(schedule);
+                datesOfInterest.AddRange((await schedule).Dates);
+            }
+
+            var rnd = new Random();
+            var randomDates = datesOfInterest.OrderBy(x => rnd.Next()).Take(sampleSize);
+
+            foreach(var date in randomDates)
+            {
+                var playerRanksByGame = await RankPlayersByGame(date, algorithm);
+                var correlations = CalculateCorrelations(playerRanksByGame);
+
+                eval.AddCorrelations(correlations);
+            }
+
+            return eval;
         }
 
         static Dictionary<ScheduleResponse.Game, decimal> CalculateCorrelations(Dictionary<ScheduleResponse.Game, Dictionary<MLBPlayer, decimal>> playerRanksByGame)
@@ -72,6 +102,20 @@ namespace FantasyHacker
                     var playerRanks = algorithm.RankPlayers(players);
                     playerRanksByGame.Add(game, playerRanks);
                 }
+            }
+            return playerRanksByGame;
+
+        }
+
+        static async Task<Dictionary<ScheduleResponse.Game, Dictionary<MLBPlayer, decimal>>> RankPlayersByGame(ScheduleResponse.Date day, IAlgorithm<MLBPlayer> algorithm)
+        {
+            var playerRanksByGame = new Dictionary<ScheduleResponse.Game, Dictionary<MLBPlayer, decimal>>();
+
+            foreach (var game in day.Games)
+            {
+                var players = (await RetrievePlayerInfo(game.GamePk, game.GameDate.Year)).Where(x => x.IsActivePlayer());
+                var playerRanks = algorithm.RankPlayers(players);
+                playerRanksByGame.Add(game, playerRanks);
             }
             return playerRanksByGame;
 

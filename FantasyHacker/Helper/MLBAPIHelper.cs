@@ -28,7 +28,7 @@ namespace FantasyHacker.Helper
         public async Task<ScheduleResponse.Schedule> GetSchedule(DateTime date)
         {
             string dateString = date.ToString("yyyy-MM-dd");
-            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&date={dateString}");
+            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&date={dateString}&gameType=R");
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
@@ -45,7 +45,7 @@ namespace FantasyHacker.Helper
             string startDateString = startDate.ToString("yyyy-MM-dd");
             string endDateString = endDate.ToString("yyyy-MM-dd");
 
-            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&startDate={startDateString}&endDate={endDateString}");
+            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&startDate={startDateString}&endDate={endDateString}&gameType=R");
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
@@ -57,7 +57,7 @@ namespace FantasyHacker.Helper
 
         public async Task<ScheduleResponse.Schedule> GetSchedule(int season)
         {
-            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&season={season}");
+            Uri uri = new Uri(BASE_URL, $"schedule/games?sportId=1&season={season}&gameType=R");
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
