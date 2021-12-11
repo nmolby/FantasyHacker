@@ -17,7 +17,7 @@ namespace FantasyHacker.BoxScoreResponse
         public Position Position { get; set; }
 
         [JsonPropertyName("stats")]
-        public Stats Stats { get; set; }
+        public Stats GameStats { get; set; }
 
         [JsonPropertyName("status")]
         public Status Status { get; set; }
@@ -41,10 +41,10 @@ namespace FantasyHacker.BoxScoreResponse
         {
             if(Position.Code == "1")
             {
-                return Stats.Pitching.Score();
+                return GameStats.Pitching.Score();
             } else
             {
-                return Stats.Batting.Score();
+                return GameStats.Batting.Score();
             }
         }
     }

@@ -12,6 +12,6 @@ namespace FantasyHacker.Interface
 
         public Position Position { get; }
 
-        public Stats Stats { get; }
+        public Stats GameStats { get; }
     }
 }

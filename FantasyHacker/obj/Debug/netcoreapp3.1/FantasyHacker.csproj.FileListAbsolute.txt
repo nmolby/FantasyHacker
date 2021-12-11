@@ -25,3 +25,5 @@
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/System.Diagnostics.DiagnosticSource.dll
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/obj/Debug/netcoreapp3.1/FantasyHacker.GeneratedMSBuildEditorConfig.editorconfig
 /Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/Extreme.Numerics.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/CsvHelper.dll
+/Users/nmolby/Projects/FantasyHacker/FantasyHacker/bin/Debug/netcoreapp3.1/FantasyHacker

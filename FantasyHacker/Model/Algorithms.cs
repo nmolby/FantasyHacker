@@ -55,5 +55,39 @@ namespace FantasyHacker.Model
             return myDict;
         }
     }
+
+    //Uses the best model calculated by including all of the season stats and using
+    //stepwise / backward / forward selection (they all have the same result)
+    //results in an r^2 of 0.0838
+    //ONLY WORKS FOR BATTERS
+    public class SlgRunsAlgorithm : IAlgorithm<MLBPlayer>
+    {
+        public Dictionary<MLBPlayer, decimal> RankPlayers(IEnumerable<MLBPlayer> players)
+        {
+            var myDict = new Dictionary<MLBPlayer, decimal>();
+
+            foreach (var player in players)
+            {
+                decimal rank;
+                if (player.Position.Code != "1")
+                {
+                    decimal slugging;
+                    if(!decimal.TryParse(player.SeasonStatsBeforeGame.Batting.Slg, out slugging))
+                    {
+                        slugging = 0;
+                    }
+
+                    rank = slugging * 13.529207m + player.SeasonStatsBeforeGame.Batting.Runs * 0.044866m;
+                }
+                else
+                {
+                    rank = 0;
+                }
+                myDict.Add(player, rank);
+            }
+
+            return myDict;
+        }
+    }
 }
 

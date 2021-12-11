@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace FantasyHacker.PersonResponse
@@ -253,7 +254,9 @@ namespace FantasyHacker.PersonResponse
         public Opponent Opponent { get; set; }
 
         [JsonPropertyName("date")]
-        public string Date { get; set; }
+        public string DateStr { get; set; }
+
+        public DateTime Date { get => DateTime.ParseExact(DateStr, "yyyy-MM-dd", CultureInfo.InvariantCulture);  }
 
         [JsonPropertyName("gameType")]
         public string GameType { get; set; }

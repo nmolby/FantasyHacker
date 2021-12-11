@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace FantasyHacker.ScheduleResponse
@@ -207,6 +208,8 @@ namespace FantasyHacker.ScheduleResponse
 
     public class Date
     {
+        public DateTime DateValue { get => DateTime.ParseExact(DateStr, "yyyy-MM-dd", CultureInfo.InvariantCulture); }
+
         [JsonPropertyName("date")]
         public string DateStr { get; set; }
 

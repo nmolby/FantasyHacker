@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using FantasyHacker.Model;
+
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Linq;
+using FantasyHacker.Interface;
 
 namespace FantasyHacker.Helper
 {
@@ -70,7 +74,7 @@ namespace FantasyHacker.Helper
         public async Task<PersonResponse.PersonResponseRoot> GetPeopleStats(IEnumerable<int> personIds, int season)
         {
             // https://statsapi.mlb.com/api/v1/people?personIds=475253,475254&season=2018&hydrate=stats(type=gameLog,season=2018)
-            Uri uri = new Uri(BASE_URL, $"people?personIds={String.Join(',', personIds)}&season={season}&hydrate=stats(type=gameLog,season={season})");
+            Uri uri = new Uri(BASE_URL, $"people?personIds={String.Join(',', personIds)}&season={season}&hydrate=stats(type=gameLog,season={season},gameType=R)");
 
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Add("User-Agent", "College Project");
@@ -96,6 +100,63 @@ namespace FantasyHacker.Helper
             var liveFeedRoot = await JsonSerializer.DeserializeAsync<LiveFeed.Root>(liveFeedResponse);
 
             return liveFeedRoot;
+        }
+
+        public async Task<IEnumerable<ScheduleResponse.Date>> GetRandomDates(int quantity)
+        {
+            var datesOfInterest = new List<ScheduleResponse.Date>();
+
+            List<Task<ScheduleResponse.Schedule>> schedulesOfInterest = new List<Task<ScheduleResponse.Schedule>>() {
+                GetSchedule(2021),
+                GetSchedule(2020),
+                GetSchedule(2019)
+            };
+
+            while (schedulesOfInterest.Any())
+            {
+                var schedule = await Task.WhenAny(schedulesOfInterest);
+                schedulesOfInterest.Remove(schedule);
+                datesOfInterest.AddRange((await schedule).Dates);
+            }
+
+            var rnd = new Random();
+            var randomDates = datesOfInterest.OrderBy(x => rnd.Next()).Take(quantity);
+            return randomDates;
+        }
+
+        public async Task<List<MLBPlayer>> RetrievePlayerInfo(int gameId, DateTime date)
+        {
+            var boxScore = await GetBoxScore(gameId);
+            var players = new List<MLBPlayer>();
+
+            foreach (IFantasyPlayer player in boxScore.GetPlayers())
+            {
+                try
+                {
+                    var newPlayer = new MLBPlayer(player.Person.Id, date);
+                    newPlayer.IngestBoxScore(boxScore, gameId);
+                    players.Add(newPlayer);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Injesting box score failed for {player.Person.FullName}. Error {e}");
+                }
+
+            }
+            var seasonStats = await GetPeopleStats(players.Select(x => x.PlayerId), date.Year);
+
+            foreach (var player in players)
+            {
+                try
+                {
+                    player.IngestSeasonStats(seasonStats);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Injesting season score failed for {player.Person.FullName}. Error {e}");
+                }
+            }
+            return players;
         }
     }
 }
